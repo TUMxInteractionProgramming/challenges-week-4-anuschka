@@ -1,3 +1,10 @@
+var currentChannel;
+var currentLocation  = {
+    longitude: -99.203147, 
+    latitude: 19.424398, 
+    what3words: 'ruffle.invested.loving'
+   };
+
 /* #6 start the #external #action and say hello */
 console.log("App is alive");
 
@@ -7,13 +14,19 @@ console.log("App is alive");
  */
 function switchChannel(channelName) {
     //Log the channel switch
-    console.log("Tuning in to channel", channelName);
+    console.log("Tuning in to channel", channelName.name);
+
+    currentChannel = channelName.name;
 
     //Write the new channel to the right app bar
-    document.getElementById('channel-name').innerHTML = channelName;
+    document.getElementById('channel-name').innerHTML = channelName.name;
 
     //#6 change the #channel #location
-    document.getElementById('channel-location').innerHTML = 'by <a href="http://w3w.co/upgrading.never.helps" target="_blank"><strong>upgrading.never.helps</strong></a>';
+    document.getElementById('channel-location').innerHTML = 'by ' + channelName.createdBy
+
+    /* #7 set the star in the app bar (like the channel name and creator) according 
+    to our object, when the user clicks on the channel (in the list) */    
+    document.getElementById('channel-star').addClass = channelName.starred ? 'fas' : 'far'
 
     /* #6 #liking channels on #click */
     /* #7 #liking channels on #click changes the class from fas to far */
@@ -22,7 +35,7 @@ function switchChannel(channelName) {
     /* #6 #highlight the selected #channel.
        This is inefficient (jQuery has to search all channel list items), but we'll change it later on */
     $('#channels li').removeClass('selected');
-    $('#channels li:contains(' + channelName + ')').addClass('selected');
+    $('#channels li:contains(' + channelName.name + ')').addClass('selected');
 }
 
 /* #6 #liking a channel on #click */
