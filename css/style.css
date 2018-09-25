@@ -174,9 +174,11 @@ li.selected {
     border-bottom: 4px solid #3F51B5;
 }
 
-#tab-bar button img {
+/* #7 fix the size and line breaks of font awesome icons */
+#tab-bar button i {
     display: block;
     margin: 0 auto 4px auto;
+    font-size: 24px;
 }
 
 /* #5 CHAT BAR */
@@ -186,6 +188,12 @@ li.selected {
     width: auto;
     flex-grow: 0;
 }
+
+/* #7 fix the size of font awesome smiley icons */
+#chat-bar button i {
+    font-size: 24px;
+}
+
 
 #emojis {
     /* #5 #smileys #emojis menu */
