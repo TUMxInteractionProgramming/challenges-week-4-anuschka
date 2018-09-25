@@ -16,8 +16,9 @@ function switchChannel(channelName) {
     document.getElementById('channel-location').innerHTML = 'by <a href="http://w3w.co/upgrading.never.helps" target="_blank"><strong>upgrading.never.helps</strong></a>';
 
     /* #6 #liking channels on #click */
-    $('#channel-star').attr('src', 'http://ip.lfe.mw.tum.de/sections/star-o.png');
-
+    /* #7 #liking channels on #click changes the class from fas to far */
+    $('#channel-star').toggleClass( "fas far" );
+   
     /* #6 #highlight the selected #channel.
        This is inefficient (jQuery has to search all channel list items), but we'll change it later on */
     $('#channels li').removeClass('selected');
@@ -26,8 +27,9 @@ function switchChannel(channelName) {
 
 /* #6 #liking a channel on #click */
 function star() {
-    $('#channel-star').attr('src', 'http://ip.lfe.mw.tum.de/sections/star.png');
-}
+    /* #7 toggle the star when clicking on it in the app bar */
+    $('#channel-star').toggleClass( "fas far" );
+      };
 
 /**
  * #6 #taptab selects the given tab
