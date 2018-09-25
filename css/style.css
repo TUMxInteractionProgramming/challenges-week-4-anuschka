@@ -127,6 +127,8 @@ li .channel-meta {
     position: absolute;
     right: 16px;
     top: 12px;
+    /* #6 Change the icon size to 24px (remember: Font Awesome is a font) */
+    font-size: 24px;
 }
 
 li img {
