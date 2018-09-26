@@ -1,4 +1,4 @@
-var currentChannel;
+var currentChannel = 'yummy'
 var currentLocation  = {
     longitude: -99.203147, 
     latitude: 19.424398, 
@@ -36,12 +36,16 @@ function switchChannel(channelName) {
        This is inefficient (jQuery has to search all channel list items), but we'll change it later on */
     $('#channels li').removeClass('selected');
     $('#channels li:contains(' + channelName.name + ')').addClass('selected');
+
+    
 }
 
 /* #6 #liking a channel on #click */
 function star() {
     /* #7 toggle the star when clicking on it in the app bar */
     $('#channel-star').toggleClass( "fas far" );
+    /* #7 currentChannel star changes accordingly when the app bar’s star is toggled */
+    console.log(eval(currentChannel).starred)
       };
 
 /**
