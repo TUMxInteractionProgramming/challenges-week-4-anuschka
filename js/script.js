@@ -72,6 +72,45 @@ function toggleEmojis() {
 }
 
 /**
+* #8 Create a sendMessage() function and attach it to the send button’s onclick event.
+*/
+function sendMessage(text){
+    var newMessage = new Message(text);
+    console.log(newMessage);
+
+    var newElement = $('<div>');
+    newElement.addClass('message');
+
+    if(newMessage.own)
+        newElement.addClass('own');
+
+    newElement.html(createMessageObject(newMessage));
+    
+    $('#messages').append(newElement);
+
+    $('#messages').scrollTop($('#messages').height());
+    $('#message-field').val('');
+}
+
+/**
+* #8 Write a createMessageElement(messageObject) function, which takes a message object and returns a
+* string representation of an HTML message element.
+*/
+
+function createMessageObject(messageObject){
+    var expiresIn = Math.round((((messageObject.expiresOn - Date.now())% 86400000) % 3600000) / 60000); // minutes
+    var messageElement = 
+    //'<div class="message">' +
+    '<h3><a href="' + messageObject.createdBy + '" target="_blank"><strong>' + messageObject.createdBy + '</strong></a>' +
+        messageObject.createdOn.toDateString() + ', ' + messageObject.createdOn.toTimeString().substring(0, 5) + '<em>' + expiresIn + ' min. left</em></h3>' +
+    '<p>' + messageObject.text + '</p>' + 
+    '<button>+5 min.</button>';
+    //'</div>';
+    return messageElement;
+
+}
+
+/**
  * #8 Write a constructor function Message(text) to create new messages
  * createdBy, latitude und longitude are assigned the respective values 
  * from the global variable currentLocation.
@@ -86,24 +125,10 @@ function Message(text) {
     this.createdBy = currentLocation.what3words;
     this.latitude = currentLocation.latitude;
     this.longitude = currentLocation.longitude;
-    this.createdOn = Date.now();/*Date.now() method returns the number of milliseconds elapsed since January */
+    this.createdOn = new Date(Date.now());/*Date.now() method returns the number of milliseconds elapsed since January */
     this.expiresOn = new Date(Date.now() + (1000 /*millisec*/ * 60 /*sec*/ * 15 /*min*/));
     this.text = text;
     this.own = true;
   }
 
-/**
-* #8 Create a sendMessage() function and attach it to the send button’s onclick event.
-*/
-function sendMessage(){
-      var newmessage = new Message('Hello Chatter');
-      console.log(newmessage);
-  }
-/**
-* #8 Write a createMessageElement(messageObject) function, which takes a message object and returns a
-* string representation of an HTML message element.
-*/
 
-function createMessageElement(messageObject){
-
-}
