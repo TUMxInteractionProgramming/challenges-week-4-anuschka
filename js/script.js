@@ -70,3 +70,24 @@ function toggleEmojis() {
     /* $('#emojis').show(); // #show */
     $('#emojis').toggle(); // #toggle
 }
+
+/**
+ * #8 Write a constructor function Message(text) to create new messages
+ * createdBy, latitude und longitude are assigned the respective values 
+ * from the global variable currentLocation.
+ * createdOn is the current date which you get with Date.now().
+ * expiresOn is a future date: in 15 minutes. Google how to set a future date in JavaScript.
+ * A message’s text is passed via the (only) text parameter and is stored in the
+ *  object’s respective property.
+ * Finally, own is simply true, since we’ll only create own messages via the 
+ * Message() constructor - all other messages will come from the server later on.
+ */
+function Message(text) {
+    this.createdBy = currentLocation.what3words;
+    this.latitude = currentLocation.latitude;
+    this.longitude = currentLocation.longitude;
+    this.createdOn = ;
+    this.expiresOn = ;
+    this.text = text;
+    this.own = true;
+  }
